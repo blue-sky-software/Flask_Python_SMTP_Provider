@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Page title -->
+    <title>Sign up | iRedMailService</title>
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!--<link rel="shortcut icon" type="image/ico" href="favicon.ico" />-->
+
+    {% include "header.html" %}
+
+</head>
+<body class="blank">
+
+    <!-- splash screen -->
+    {% include "splash.html" %}
+
+
+<div class="color-line"></div>
+<!-- <div class="back-link">
+    <a href="/" class="btn btn-primary">Back to Dashboard</a>
+</div> -->
+<div class="register-container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="text-center m-b-md">
+                <h3>Registration</h3>
+                <!--small>Full suported AngularJS WebApp/Admin template with very clean and aesthetic style prepared for your next app. </small-->
+            </div>
+            <div class="hpanel">
+                <div class="panel-body">
+                        <form method="POST" action="" role="form" id="form">
+                            <div class="row">
+                            <div class="form-group col-lg-12">
+                                {{ form.hidden_tag() if form.hidden_tag }}
+                                {% for f in form if f.type != 'CSRFTokenField' %}
+                                <div>
+                                    {% if f.errors %}
+                                        {% for e in f.errors %}
+                                        <label class="error">{{ e }}</label><br>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <div class="form-group col-lg-12">
+                                <label>Username</label>
+                                <input type="text" value="" id="" class="form-control" name="name">
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label>Password</label>
+                                <input type="password" value="" id="password" class="form-control" name="password">
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label>Repeat Password</label>
+                                <input type="password" value="" id="" class="form-control" name="password_confirm">
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label>Email Address</label>
+                                <input type="email" value="" id="email" class="form-control" name="email">
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label>Repeat Email Address</label>
+                                <input type="email" value="" id="" class="form-control" name="email_repeat">
+                            </div>
+                            <!--div class="checkbox col-lg-12">
+                                <input type="checkbox" class="i-checks" checked>
+                                Sign up for our newsletter
+                            </div-->
+                            </div>
+                            <div class="text-center">
+                                <button class="btn btn-success">Register</button>
+                                <!--button class="btn btn-default">Cancel</button-->
+                            </div>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <strong>iRedMailService</strong> - SMTP Mail Service <br/> 2015 Copyright Company Name
+        </div>
+    </div>    
+    
+    <!-- Footer Script -->
+    <!-- {% include "footer.html" %} -->
+
+</div>
+
+<!-- Footer Script -->
+{% include "footer_script.html" %}
+<script src="{{ url_for('static', filename='vendor/jquery-validation/jquery.validate.min.js') }}"></script>
+<!-- App scripts -->
+<script src="{{ url_for('static', filename='scripts/homer.js') }}"></script>
+
+<script>
+    $(function(){
+
+        $("#form").validate({
+            rules: {
+                name: {
+                    required: true,
+                },
+                password: {
+                    required: true,
+                    minlength: 6
+                },
+                password_confirm: {
+                    required: true,
+                    equalTo: "#password"
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+                email_repeat: {
+                    required: true,
+                    equalTo: "#email"
+                }
+            },
+            messages: {
+                name: {
+                    required: "Please enter a user name"
+                },
+                password: {
+                    required: "Please enter a password"
+                },
+                password_confirm: {
+                    required: "Please enter a password",
+                    equalTo: "Please enter the same password as above"
+                },
+                email: {
+                    required: "Please enter a email address"
+                },
+                email_repeat: {
+                    required: "Please enter a email address",
+                    equalTo: "Please enter the same password as above"
+                }  
+            },
+            submitHandler: function(form) {
+                form.submit();
+            }
+        });
+
+    });
+</script>
+
+</body>
+</html>

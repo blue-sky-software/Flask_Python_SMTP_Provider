@@ -1,0 +1,7 @@
+Flask
+Flask-Admin
+Flask-MongoEngine
+Flask-WTF
+Flask-Login==0.2.11
+Flask-Bcrypt==0.6.0
+Jinja2==2.7.3

@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+{% block title %}Statistics | iRedMailService{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <link href="{{ url_for('static', filename='vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block wrapper %}
+<!-- Main Wrapper -->
+<div id="wrapper">
+
+    <div class="normalheader transition animated fadeIn">
+        <div class="hpanel">
+            <div class="panel-body">
+                <a class="small-header-action" href="">
+                    <div class="clip-header">
+                        <i class="fa fa-arrow-up"></i>
+                    </div>
+                </a>
+
+                <div id="hbreadcrumb" class="pull-right m-t-lg">
+                    <ol class="hbreadcrumb breadcrumb">
+                        <li><a href="/">Dashboard</a></li>
+                        <li>Settings</li>
+                        <li class="active">
+                            <span>Billing</span>
+                        </li>
+                    </ol>
+                </div>
+                <h2 class="font-light m-b-xs">
+                    Billing Overview
+                </h2>
+                <small></small>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+</div>
+
+{% block footer %}
+{{ super() }}
+
+<!-- Vendor scripts -->
+<script src="{{ url_for('static', filename='vendor/datatables/media/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.min.js') }}"></script>
+
+<!-- App scripts -->
+<script src="{{ url_for('static', filename='scripts/homer.js') }}"></script>
+
+<script>
+
+    $(function () {
+
+        // Initialize Example 1
+        $('#example1').dataTable( {
+            "ajax": 'api/datatables.json'
+        });
+
+        // Initialize Example 2
+        $('#example2').dataTable();
+
+    });
+
+</script>
+{% endblock %}
+
+</body>
+</html>
